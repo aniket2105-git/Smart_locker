@@ -1,7 +1,12 @@
 #include <LPC21xx.H>
+#include <stdio.h>
+#include <string.h>
+
+
 
 #define buzzer (1<<21)
 
+#define LED (7<<17)
 #define LED1 (1<<17)
 #define LED2 (1<<18)
 #define LED3 (1<<19)
@@ -43,6 +48,12 @@ void uart_str(char *p);
 void spi_init(void);
 unsigned char spi_data(unsigned char);
 unsigned int spi_mcp3204(unsigned char);
+
+//================================ MAIN ================================
+
+void pass_check(char *p);
+
+
 
 
 
