@@ -1,8 +1,5 @@
 #include <LPC21xx.H>
-#include <stdio.h>
-#include <string.h>
-
-
+#include<string.h>
 
 #define buzzer (1<<21)
 
@@ -35,10 +32,12 @@ void lcd_str(char *p);
 void uart_init(void);
 void uart_str(char *p);
 
-//================================ UART INTERRUPT  ================================
+//================================   INTERRUPT  ================================
 
  void uart_int_config(void);
  void uart_int_enable(void);
+ void eint_enble(void);
+ void eint_config(void);
 
 //================================ SPI ================================
 
@@ -49,11 +48,9 @@ void spi_init(void);
 unsigned char spi_data(unsigned char);
 unsigned int spi_mcp3204(unsigned char);
 
-//================================ MAIN ================================
+ //================================ MAIN ================================
 
-void pass_check(char *p);
-
-
-
+int pass_check(char *p);
+int lcd_msg(int n);
 
 

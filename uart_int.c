@@ -7,7 +7,7 @@ void uart_str_handler()__irq{
 	if(r==2){
 		while(RDR==0);
 	   str[i]=U0RBR;
-	   U0THR='*';
+	 lcd_data('*');
 	   if(str[i]=='\r'){
 	   		  f=1;
 	   		  str[i]='\0';

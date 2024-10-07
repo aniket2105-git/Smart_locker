@@ -1,38 +1,51 @@
 #include"header.h"
+int c;
 
-void pass_check(char *p){
-	int i;
+int pass_check(char *p){
 	char pass[]="aniket\0";
-	lcd_cmd(0xC0);
-	lcd_str("                ");
 	if(strcmp(p,pass)==0){
-		IOCLR0=buzzer;
-		sec_delay(1);
-		IOSET0=buzzer;
-		for(i=0;i<3;i++){
-			lcd_str("Access Granted");
-			sec_delay(1);
-			lcd_str("                ");
-			sec_delay(1);	
-		}
+		  return 1;
 	}
 	else{
-		for(i=0;i<3;i++){
-			IOCLR0=buzzer;
-			sec_delay(1);
-			IOSET0=buzzer;
-			for(i=0;i<3;i++){
-				lcd_str("Access Denied");
-				sec_delay(1);
-				lcd_str("                ");
-				sec_delay(1);
-			}
-		}
-	}
-	
+		 return 0;
+	}	
 }
 
-
+int  lcd_msg(int n){
+	int i;
+	if(n==1){
+			for(i=0;i<3;i++){
+			lcd_str("#Access Granted#");
+			IOSET0=buzzer;
+			IOCLR0=LED;
+			ms_delay(750);
+	   		IOCLR0=buzzer;
+			IOSET0=LED;		
+			lcd_cmd(0x01);   
+			lcd_str("#Access Granted#");
+			ms_delay(750);
+			lcd_cmd(0x01);
+			ms_delay(750);	
+			}
+			c=0;
+	}
+	 else{
+		for(i=0;i<5;i++){
+			lcd_cmd(0x01);
+			lcd_str("#Access  Denied#");
+			ms_delay(750);
+			lcd_cmd(0x01);
+			ms_delay(750);
+			IOSET0=buzzer;
+			IOCLR0=LED;
+			ms_delay(750);
+	   		IOCLR0=buzzer;
+			IOSET0=LED;	
+		}
+		c++;	
+	}
+	return c;
+}
 
 
 

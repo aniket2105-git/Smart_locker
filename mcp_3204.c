@@ -3,7 +3,7 @@
 void spi_init(void){
 	PINSEL0|=0x1500;
 	IODIR0|=CS;
-	IOSET0=CS;
+	IOSET0|=CS;
 	S0SPCR=0x20;
 	S0SPCCR=15;
 
