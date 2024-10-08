@@ -15,10 +15,10 @@ unsigned char spi_data(unsigned char data){
 }	   
 unsigned int spi_mcp3204(unsigned char ch_num){
 	unsigned int res=0;
-	unsigned char hByte,lByte;
+	unsigned char hByte=0,lByte=0;
 	IOCLR0=CS;
 	ch_num<<=6;
-	spi_data(0x0);
+	spi_data(0x6);
 	hByte=spi_data(ch_num);
 	lByte=spi_data(0x0);
 	IOSET0=CS;

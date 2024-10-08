@@ -56,5 +56,26 @@ void lcd_str(char *p){
 	}
 }
 
+void lcd_int(int n){
+	char a[20];
+	int i=0;
+	if(n==0){
+		lcd_data('0');   	
+		return;
+	}
+	if(n<0){
+	 lcd_data('-');
+	 n=-n;
+	}
+	while(n>0){
+	 a[i++]=n%10+48;
+	 n/=10;
+	}
+	for(i--;i>=0;i--){
+	   lcd_data(a[i]);
+	}
+
+}
+
 
 

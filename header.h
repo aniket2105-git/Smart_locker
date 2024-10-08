@@ -23,6 +23,7 @@ void lcd_data(unsigned char);
 void lcd_cmd(unsigned char);
 void lcd_init(void);
 void lcd_str(char *p);
+void lcd_int(int n);
 
 //================================ UART ================================
 
@@ -31,6 +32,7 @@ void lcd_str(char *p);
 
 void uart_init(void);
 void uart_str(char *p);
+ void uart_int(int n);
 
 //================================   INTERRUPT  ================================
 
@@ -48,9 +50,13 @@ void spi_init(void);
 unsigned char spi_data(unsigned char);
 unsigned int spi_mcp3204(unsigned char);
 
- //================================ MAIN ================================
+//================================ MAIN ================================
 
 int pass_check(char *p);
 int lcd_msg(int n);
+void lcd_clr(void);
+void loc_block(void);  
+void buzzer_on(int n);
+void lcd_blk(void);
 
 
